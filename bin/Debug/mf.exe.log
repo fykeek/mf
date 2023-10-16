@@ -1,0 +1,280 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2300 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004226F0 in D:\ЛМ 3\bin\Debug\mf.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042BA35 in D:\ЛМ 3\bin\Debug\mf.exe: drawJotoro() at D:/ЛМ 3/mf/main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+# 2 0x0042C363 in D:\ЛМ 3\bin\Debug\mf.exe: main() at D:/ЛМ 3/mf/main.cpp (48):
+
+     46:     txTextOut (425, 85, "C++");
+     47: 
+=>   48:     drawJotoro(jotoro, 200);
+     49: 
+     50:     txDeleteDC(jotoro);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawJotoro(HDC, int) at D:\ЛМ 3\mf\main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct  6 2023 17:01:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 06 2023 17:01:28
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x1508 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004226F0 in D:\ЛМ 3\bin\Debug\mf.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042BA35 in D:\ЛМ 3\bin\Debug\mf.exe: drawJotoro() at D:/ЛМ 3/mf/main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+# 2 0x0042C35F in D:\ЛМ 3\bin\Debug\mf.exe: main() at D:/ЛМ 3/mf/main.cpp (48):
+
+     46:     txTextOut (425, 85, "C++");
+     47: 
+=>   48:     drawJotoro(jotoro, 200);
+     49: 
+     50:     txDeleteDC(jotoro);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawJotoro(HDC, int) at D:\ЛМ 3\mf\main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct  6 2023 17:06:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 06 2023 17:07:18
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 130, 314} не полностью лежит внутри изображения-источника {0, 0, 50, 120}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2278 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\ЛМ 3\bin\Debug\mf.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042BA35 in D:\ЛМ 3\bin\Debug\mf.exe: drawJotoro() at D:/ЛМ 3/mf/main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+# 2 0x0042C35F in D:\ЛМ 3\bin\Debug\mf.exe: main() at D:/ЛМ 3/mf/main.cpp (48):
+
+     46:     txTextOut (425, 85, "C++");
+     47: 
+=>   48:     drawJotoro(jotoro, 200);
+     49: 
+     50:     txDeleteDC(jotoro);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in void drawJotoro(HDC, int) at D:\ЛМ 3\mf\main.cpp (5):
+
+      3: void drawJotoro(HDC jotoro, int x)
+      4: {
+=>    5:     txTransparentBlt (txDC(), x, 200, 130, 314, jotoro, 0 , 0, TX_WHITE) ;
+      6: }
+      7: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct  6 2023 17:12:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 06 2023 17:12:28
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 14248, функция: intptr_t {anonymous}::TX::txPlayVideo(int, int, int, int, const char*, double, double, HWND),
+
+Сообщение: Возможно, окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdre0, Thread: 0x334 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042681B in D:\ЛМ 3\bin\Debug\mf.exe: txPlayVideo() at c:/codeblocks/codeblocks/mingw/include/txlib.h (14248)
+# 1 0x004279CA in D:\ЛМ 3\bin\Debug\mf.exe: txPlayVideo() at c:/codeblocks/codeblocks/mingw/include/txlib.h (14400)
+# 2 0x0040570B in D:\ЛМ 3\bin\Debug\mf.exe: _txCleanup() at c:/codeblocks/codeblocks/mingw/include/txlib.h (9082)
+# 3 0x00404996 in D:\ЛМ 3\bin\Debug\mf.exe: _txOnCExit() at c:/codeblocks/codeblocks/mingw/include/txlib.h (8894)
+# 4 0x00401284 in D:\ЛМ 3\bin\Debug\mf.exe: __mingw_CRTStartup()
+# 5 0x004012C5 in D:\ЛМ 3\bin\Debug\mf.exe: WinMainCRTStartup()
+# 6 0x77A07B1E in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x77A07AEE in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in intptr_t {anonymous}::TX::txPlayVideo(int, int, int, int, const char*, double, double, HWND) at c:\codeblocks\codeblocks\mingw\include\txlib.h (14248):
+
+  14246:                       double zoom /*= 0*/, double gain /*= 1*/, HWND wnd /*= txWindow()*/)
+  14247:     {
+=>14248: $1  if (wnd && wnd == txWindow() && _TX_TXWINDOW_FAILED()) return -1;
+  14249: 
+  14250: $   int time = GetTickCount();  //-V2551
+
+# 1 in intptr_t {anonymous}::TX::txPlayVideo(const char*, double, double, HWND) at c:\codeblocks\codeblocks\mingw\include\txlib.h (14400):
+
+  14398: intptr_t txPlayVideo (const char fileName[], double zoom /*= 0*/, double gain /*= 0*/, HWND wnd /*= txWindow()*/)
+  14399:     {
+=>14400: $1  return txPlayVideo (0, 0, 0, 0, fileName, zoom, gain, wnd);
+  14401:     }
+  14402: 
+
+# 2 in void {anonymous}::TX::_txCleanup() at c:\codeblocks\codeblocks\mingw\include\txlib.h (9082):
+
+   9080: 
+   9081: $   txSpeak     (NULL);
+=> 9082: $   txPlayVideo (NULL);
+   9083: 
+   9084: $   delete _txCanvas_UserDCs;
+
+# 3 in void {anonymous}::TX::_txOnCExit() at c:\codeblocks\codeblocks\mingw\include\txlib.h (8894):
+
+   8892:     OutputDebugString ("\n");
+   8893: 
+=> 8894: $5  _txCleanup();
+   8895: 
+   8896:     _TX_CALLv (Win32::_cexit, ());
+
+# 4 in int main() at D:\ЛМ 3\mf\main.cpp (69):
+
+     67:     txDeleteDC(jotoro);
+     68: 
+=>   69:     txTextCursor (false);
+     70:     return 0;
+     71:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct  9 2023 16:59:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 09 2023 17:01:18
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
