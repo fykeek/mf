@@ -29,29 +29,57 @@ void drawHouse()
     txRectangle   (540, 240, 625, 325);
     txRectangle   (675, 240, 760, 325);
     txRectangle   (675, 375, 760, 460);
-
-}
-void DrawDoor(int xDoor, int yDoor)
-{
     txSetColor (TX_YELLOW);
     txSetFillColor (TX_YELLOW);;
     txRectangle   (540, 375, 625, 490);
-    txSetColor (TX_YELLOW);
-    txSetFillColor (TX_YELLOW);
+}
+void DrawDoor(int xDoor, int yDoor)
+{
+
     txSetColor (RGB(185, 122, 87));
     txSetFillColor (RGB(185, 122, 87));
     POINT door[4] = {{xDoor,yDoor}, {625, 375}, {625, 490},{xDoor, yDoor + 115}};
     txPolygon(door, 4);
 }
- void DrowSun()
+void drawShop()
+{
+
+    txSetColor (RGB(240, 230, 180));
+    txSetFillColor (RGB(240, 230, 180));
+    txRectangle   (0, 2090, 300, 490);
+    txSetColor (RGB(255, 0, 0));
+    txSetFillColor (RGB(255, 0, 0));
+    POINT tr[3] = {{0, 189}, {150, 90}, {300, 189}};
+    txPolygon (tr,3);
+    txSetColor (RGB(195, 195, 195));
+    txSetFillColor (RGB(195, 195, 195));
+    txRectangle   (0, 190, 300, 265);
+    txSetColor (TX_YELLOW);
+    txSetFillColor (TX_YELLOW);
+    txRectangle (110, 375, 190, 490);
+    txSetColor (RGB(60, 70, 210));
+    txSetFillColor (RGB(60, 70, 210));
+    txRectangle   (10, 375, 100, 465);
+    txRectangle   (200, 375, 290, 465);
+
+}
+void DrawDoor2(int xDoor, int yDoor)
+{
+
+    txSetColor (RGB(185, 122, 87));
+    txSetFillColor (RGB(185, 122, 87));
+    POINT door[4] = {{xDoor,yDoor}, {190, 375}, {190, 490},{xDoor, yDoor + 115}};
+    txPolygon(door, 4);
+    }
+ void DrowSun(int xs, int rs)
  {
     txSetColor (RGB(255, 255, 5));
         txSetFillColor (RGB(255, 255, 5));
-        txCircle (0,0, 180);
+        txCircle (xs,0, rs);
   }
- void drawJotoro(HDC jotoro, int x)
+ void drawJotoro(HDC jotoro, int x, int rx, int ry)
 {
-    txTransparentBlt (txDC(), x, 380, 47, 115, jotoro, 0 , 0, TX_WHITE) ;
+    Win32::TransparentBlt (txDC(), x, 380, rx, ry, jotoro, 0 , 0, 130, 314, TX_WHITE) ;
 }
 
 int main()
@@ -59,10 +87,15 @@ int main()
     int xDoor =540;
     int yDoor =375;
 
+    int xDoor2 =110;
+    int yDoor2 =375;
+
     txCreateWindow (800, 600);
 
     HDC jotoro  = txLoadImage ("jotaro.bmp");
     int x_jotoro = 550;
+    int xRazm = 47;
+    int yRazm = 115;
 
     HDC oblako  = txLoadImage ("obl.bmp");
     int x_oblako = 290;
@@ -73,30 +106,56 @@ int main()
 
         drawFon();
 
-        DrowSun();
+        DrowSun(0,180);
 
         drawOblako(oblako, x_oblako);
 
         drawHouse();
 
-        drawJotoro(jotoro, x_jotoro);
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
         DrawDoor(xDoor, yDoor);
 
-        xDoor += 1;
-        yDoor += 1;
+        xDoor += 4;
+        yDoor += 4;
 
+        x_oblako -= 1;
         txEnd();
         txSleep(10);
     }
+    while(yRazm < 150)
+    {
+        txBegin();
 
+        drawFon();
+
+        DrowSun(0,180);
+
+        drawOblako(oblako, x_oblako);
+
+        drawHouse();
+
+        DrawDoor(xDoor, yDoor);
+
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
+
+
+
+        x_oblako -= 2;
+
+        xRazm += 1;
+        yRazm += 2;
+        x_jotoro -= 1;
+        txEnd();
+        txSleep(10);
+    }
     while(xDoor > 540)
     {
         txBegin();
 
         drawFon();
 
-        DrowSun();
+        DrowSun(0,180);
 
         drawOblako(oblako, x_oblako);
 
@@ -104,22 +163,23 @@ int main()
 
         DrawDoor(xDoor, yDoor);
 
-        drawJotoro(jotoro, x_jotoro);
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
-        xDoor -= 1;
-        yDoor -= 1;
+        xDoor -= 4;
+        yDoor -= 4;
 
+        x_oblako -= 1;
         txEnd();
         txSleep(10);
     }
 
-    while(x_jotoro > -50)
+    while(x_jotoro > -70)
     {
         txBegin();
 
         drawFon();
 
-        DrowSun();
+        DrowSun(0,180);
 
         drawOblako(oblako, x_oblako);
 
@@ -127,17 +187,45 @@ int main()
 
         DrawDoor(xDoor, yDoor);
 
-        drawJotoro(jotoro, x_jotoro);
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
 
 
-        x_oblako -= 2;
+        x_oblako -= 1;
 
         x_jotoro -= 5;
         txEnd();
         txSleep(10);
     }
 
+    x_jotoro = 865;
+    x_oblako = 515;
+
+    while(x_jotoro > 600)
+    {
+        txBegin();
+
+        drawFon();
+
+        DrowSun(400,135);
+
+        drawOblako(oblako, x_oblako);
+
+        drawShop();
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
+
+
+
+        x_oblako -= 1;
+
+        x_jotoro -= 5;
+        txEnd();
+        txSleep(10);
+
+     }
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
 
