@@ -79,16 +79,28 @@ void DrawDoor2(int xDoor, int yDoor)
     txPolygon(door, 4);
     }
  void DrowSun(int xs, int rs)
- 
+
  {
-    txSetColor (RGB(255, 255, 5));
+        txSetColor (RGB(255, 255, 5));
         txSetFillColor (RGB(255, 255, 5));
         txCircle (xs,0, rs);
   }
-  void drawStrela
+ void drawStrela(int xs, int ys, int xn, int yn)
+ {
+    txSetColor (RGB(185, 122, 87), 5);
+    txLine (xs, ys, xs + 40, ys);
+    txSetColor (RGB(255, 240, 0));
+    txSetFillColor (RGB(255, 240, 0));
+    POINT nak[3] = {{xn,yn}, {xn-15, yn - 5}, {xn-15, yn + 5}};
+    txPolygon(nak, 3);
+ }
  void drawJotoro(HDC jotoro, int x, int rx, int ry)
 {
     Win32::TransparentBlt (txDC(), x, 380, rx, ry, jotoro, 0 , 0, 130, 314, TX_WHITE) ;
+}
+void drawStar(HDC star, int x, int y, int rx, int ry)
+{
+    Win32::TransparentBlt (txDC(), x, y, rx, ry, star, 0 , 0, 214, 531, TX_WHITE) ;
 }
 
 int main()
@@ -98,11 +110,11 @@ int main()
 
     int xDoor2 =110;
     int yDoor2 =375;
-    
-    int xStr = 250
-    int yStr = 390
-    int xNak = 300
-    int yNak = 390
+
+    int xStr = 250;
+    int yStr = 430;
+    int xNak = 300;
+    int yNak = 430;
 
     txCreateWindow (800, 600);
 
@@ -110,6 +122,12 @@ int main()
     int x_jotoro = 550;
     int xRazm = 47;
     int yRazm = 113;
+
+    HDC star  = txLoadImage ("Star.bmp");
+    int xStar = 610;
+    float yStar = 390;
+    int xRazmS = 20;
+    int yRazmS = 50;
 
     HDC oblako  = txLoadImage ("obl.bmp");
     int x_oblako = 290;
@@ -215,7 +233,7 @@ int main()
     x_jotoro = 865;
     x_oblako = 515;
 
-    while(x_jotoro > 585)
+    while(x_jotoro > 560)
     {
         txBegin();
 
@@ -225,6 +243,8 @@ int main()
 
         drawOblako(oblako, x_oblako);
 
+        drawStrela(xStr, yStr, xNak, yNak);
+
         drawShop();
 
         DrawDoor2(xDoor2, yDoor2);
@@ -233,17 +253,26 @@ int main()
 
         dravRook();
 
+        drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
 
 
         x_oblako -= 1;
 
         x_jotoro -= 5;
+
+        xStr += 5;
+        xNak += 5;
         txEnd();
         txSleep(10);
 
      }
+
+
+
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
+    txDeleteDC(star);
 
     txTextCursor (false);
     return 0;
