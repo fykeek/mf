@@ -64,6 +64,10 @@ void drawShop()
     txSetColor (TX_YELLOW);
     txSetFillColor (TX_YELLOW);
     txRectangle (110, 375, 190, 490);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txSelectFont("Oldtimer" , 60, 37.5) ;
+    txDrawText(0, 290, 300, 365, "Ã¿√¿«»Õ");
     txSetColor (RGB(60, 70, 210));
     txSetFillColor (RGB(60, 70, 210));
     txRectangle   (15, 375, 95, 455);
@@ -102,9 +106,37 @@ void drawStar(HDC star, int x, int y, int rx, int ry)
 {
     Win32::TransparentBlt (txDC(), x, y, rx, ry, star, 0 , 0, 214, 531, TX_WHITE) ;
 }
+void drawDialog()
+{
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse  (470, 330, 570, 380);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txSelectFont("Comic Sans MS" , 20) ;
+    txDrawText(470, 330, 570, 380, "◊“Œ ›“Œ!!!");
+    txSleep(2000);
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse  (470, 330, 570, 380);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txDrawText(470, 330, 570, 380, "›ÚÓ ÊÂ\n"
+                                    "ÒÚÂÌ‰");
+    txSleep(2000);
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse  (470, 330, 570, 380);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txDrawText(470, 330, 570, 380, "À‡‰ÌÓ");
+    txSleep(2000);
+}
 
 int main()
     {
+    int vrema = 0;
+
     int xDoor =540;
     int yDoor =375;
 
@@ -290,14 +322,43 @@ int main()
 
         x_oblako -= 1;
 
-        xRazmS += 1;
-        yRazmS += 2.5;
-        yStar -= 1.5;
+        xRazmS += 2;
+        yRazmS += 5;
+        yStar -= 3;
         txEnd();
         txSleep(10);
     }
 
+while(vrema < 1)
+    {
+        txBegin();
 
+        drawFon();
+
+        DrowSun(400,135);
+
+        drawOblako(oblako, x_oblako);
+
+        drawShop();
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
+
+        dravRook();
+
+        drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
+        drawDialog();
+
+
+
+        x_oblako -= 1;
+
+        vrema += 1;
+        txEnd();
+        txSleep(1000);
+    }
 
     txDeleteDC(jotoro);
     txDeleteDC(oblako);

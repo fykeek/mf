@@ -278,3 +278,135 @@ Run file:	D:\ЛМ 3\bin\Debug\mf.exe
 Directory:	D:\ЛМ 3
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13396, функция: bool {anonymous}::TX::txDrawText(double, double, double, double, const char*, unsigned int, HDC),
+
+Сообщение: Параметр y0 = 430 больше, чем y1 = 380. Текст выводиться не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRe0, Thread: 0xE80 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042024E in D:\ЛМ 3\bin\Debug\mf.exe: txDrawText() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13396)
+
+# 1 0x0042CE48 in D:\ЛМ 3\bin\Debug\mf.exe: drawDialog() at D:/ЛМ 3/mf/main.cpp (117):
+
+    115:     txSetFillColor (TX_BLACK);
+    116:     txSelectFont("Comic Sans MS" , 20) ;
+=>  117:     txDrawText(450, 430, 550, 380, "ЧТО ЭТО!!!");
+    118: }
+    119: 
+
+# 2 0x0042D5B2 in D:\ЛМ 3\bin\Debug\mf.exe: main() at D:/ЛМ 3/mf/main.cpp (301):
+
+    299:         dravRook();
+    300: 
+=>  301:         drawDialog();
+    302: 
+    303:         drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txDrawText(double, double, double, double, const char*, unsigned int, HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13396):
+
+  13394:         {
+  13395: $       SetLastError (ERROR_INVALID_DATA);
+=>13396: $       TX_ERROR ("Параметр y0 = %g больше, чем y1 = %g. Текст выводиться не будет.", y0, y1);
+  13397:         }
+  13398: 
+
+# 1 in void drawDialog() at D:\ЛМ 3\mf\main.cpp (117):
+
+    115:     txSetFillColor (TX_BLACK);
+    116:     txSelectFont("Comic Sans MS" , 20) ;
+=>  117:     txDrawText(450, 430, 550, 380, "ЧТО ЭТО!!!");
+    118: }
+    119: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 27 2023 17:58:30, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 27 2023 17:58:50
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\ЛМ 3\bin\Debug\mf.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13396, функция: bool {anonymous}::TX::txDrawText(double, double, double, double, const char*, unsigned int, HDC),
+
+Сообщение: Параметр y0 = 430 больше, чем y1 = 380. Текст выводиться не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRe0, Thread: 0xE80 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042024E in D:\ЛМ 3\bin\Debug\mf.exe: txDrawText() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13396)
+
+# 1 0x0042CE48 in D:\ЛМ 3\bin\Debug\mf.exe: drawDialog() at D:/ЛМ 3/mf/main.cpp (117):
+
+    115:     txSetFillColor (TX_BLACK);
+    116:     txSelectFont("Comic Sans MS" , 20) ;
+=>  117:     txDrawText(450, 430, 550, 380, "ЧТО ЭТО!!!");
+    118: }
+    119: 
+
+# 2 0x0042D5B2 in D:\ЛМ 3\bin\Debug\mf.exe: main() at D:/ЛМ 3/mf/main.cpp (301):
+
+    299:         dravRook();
+    300: 
+=>  301:         drawDialog();
+    302: 
+    303:         drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txDrawText(double, double, double, double, const char*, unsigned int, HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13396):
+
+  13394:         {
+  13395: $       SetLastError (ERROR_INVALID_DATA);
+=>13396: $       TX_ERROR ("Параметр y0 = %g больше, чем y1 = %g. Текст выводиться не будет.", y0, y1);
+  13397:         }
+  13398: 
+
+# 1 in void drawDialog() at D:\ЛМ 3\mf\main.cpp (117):
+
+    115:     txSetFillColor (TX_BLACK);
+    116:     txSelectFont("Comic Sans MS" , 20) ;
+=>  117:     txDrawText(450, 430, 550, 380, "ЧТО ЭТО!!!");
+    118: }
+    119: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 27 2023 17:58:30, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 27 2023 17:58:49
+
+Run file:	D:\ЛМ 3\bin\Debug\mf.exe
+Directory:	D:\ЛМ 3
+
+--------------------------------------------------
