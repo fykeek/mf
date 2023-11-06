@@ -66,7 +66,7 @@ void drawShop()
     txRectangle (110, 375, 190, 490);
     txSetColor (TX_BLACK);
     txSetFillColor (TX_BLACK);
-    txSelectFont("Oldtimer" , 60, 37.5) ;
+    txSelectFont(/*"Oldtimer"*/ "Comic Sans MS", 70) ;
     txDrawText(0, 290, 300, 365, "МАГАЗИН");
     txSetColor (RGB(60, 70, 210));
     txSetFillColor (RGB(60, 70, 210));
@@ -79,7 +79,7 @@ void DrawDoor2(int xDoor, int yDoor)
 
     txSetColor (RGB(185, 122, 87));
     txSetFillColor (RGB(185, 122, 87));
-    POINT door[4] = {{xDoor,yDoor}, {190, 375}, {190, 490},{xDoor, yDoor + 115}};
+    POINT door[4] = {{xDoor,yDoor}, {110, 375}, {110, 490},{xDoor, yDoor + 115}};
     txPolygon(door, 4);
     }
  void DrowSun(int xs, int rs)
@@ -106,10 +106,10 @@ void drawStar(HDC star, int x, int y, int rx, int ry)
 {
     Win32::TransparentBlt (txDC(), x, y, rx, ry, star, 0 , 0, 214, 531, TX_WHITE) ;
 }
-void drawDialog(const char* text)
+void drawDialog(const char* text, COLORREF color)
 {
-    txSetColor (TX_WHITE);
-    txSetFillColor (TX_WHITE);
+    txSetColor (color);
+    txSetFillColor (color);
     POINT d[3] ={{570, 380}, {550, 375}, {560, 370}};
     txPolygon(d, 3);
     txEllipse  (470, 330, 570, 380);
@@ -117,6 +117,18 @@ void drawDialog(const char* text)
     txSetFillColor (TX_BLACK);
     txSelectFont("Comic Sans MS" , 20) ;
     txDrawText(470, 330, 570, 380, text);
+}
+void drawOjid()
+{
+    txSetColor (TX_ORANGE);
+    txSetFillColor (TX_ORANGE);
+    txRectangle (0,0, 800,600);
+    txSetColor (TX_BLUE);
+    txSetFillColor (TX_BLUE);
+    txSelectFont("Comic Sans MS" , 100) ;
+    txDrawText(470, 330, 570, 380, "Спустя/n"
+                                    "2 часа");
+    
 }
 
 int main()
@@ -126,7 +138,7 @@ int main()
     int xDoor =540;
     int yDoor =375;
 
-    int xDoor2 =110;
+    int xDoor2 =190;
     int yDoor2 =375;
 
     int xStr = 250;
@@ -315,10 +327,10 @@ int main()
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
         drawStar(star, xStar, yStar, xRazmS, yRazmS);
         dravRook();
-        drawDialog("ЧТО ЭТО!!!");
+        drawDialog("ЧТО ЭТО!!!", TX_WHITE);
 
         x_oblako -= 1;
-        vrema += 15 ;
+        vrema += 10 ;
 
         txEnd();
         txSleep(10);
@@ -336,7 +348,7 @@ int main()
         drawStar(star, xStar, yStar, xRazmS, yRazmS);
         dravRook();
         drawDialog("Это же\n"
-                    "стенд");
+                    "стенд", TX_WHITE);
 
         x_oblako -= 1;
         vrema += 10 ;
@@ -356,7 +368,7 @@ int main()
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
         drawStar(star, xStar, yStar, xRazmS, yRazmS);
         dravRook();
-        drawDialog("Ладно");
+        drawDialog("Ладно", TX_WHITE);
 
         x_oblako -= 1;
         vrema += 10 ;
@@ -391,7 +403,7 @@ int main()
         txSleep(10);
         txEnd();
     }
-    while(xDoor < 626)
+    while(xDoor2 > 110)
     {
         txBegin();
 
@@ -409,8 +421,8 @@ int main()
 
         dravRook();
 
-        xDoor += 4;
-        yDoor += 4;
+        xDoor2 -= 4;
+        yDoor2 += 4;
 
         x_oblako -= 1;
         txEnd();
@@ -445,6 +457,34 @@ int main()
         txSleep(10);
     }
 
+    while(xDoor2 < 194)
+    {
+        txBegin();
+
+        drawFon();
+
+        DrowSun(400,135);
+
+        drawOblako(oblako, x_oblako);
+
+        drawShop();
+
+        drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        dravRook();
+
+        xDoor2 += 4;
+        yDoor2 -= 4;
+
+        x_oblako -= 1;
+        txEnd();
+        txSleep(10);
+    }
+    vrema = 0
+    
+    
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
     txDeleteDC(star);
