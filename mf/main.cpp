@@ -9,6 +9,19 @@ void drawFon()
     txSetFillColor (RGB(80, 220, 30));
     txRectangle   (0, 490, 800, 600);
 }
+void drawNight()
+{
+    txSetColor (RGB(17, 10, 100));
+    txSetFillColor (RGB(17, 10, 100));
+    txRectangle(0, 0, 800, 490);
+    txSetColor (RGB(0, 123, 0));
+    txSetFillColor (RGB(0, 123, 0));
+    txRectangle   (0, 490, 800, 600);
+}
+void drawZvezd(HDC zvezd)
+{
+    txTransparentBlt (txDC(), 0, 0, 800, 490, zvezd, 0 , 0, TX_WHITE) ;
+}
 void dravRook()
 {
     txSetColor (TX_GREY);
@@ -83,7 +96,6 @@ void DrawDoor2(int xDoor, int yDoor)
     txPolygon(door, 4);
     }
  void DrowSun(int xs, int rs)
-
  {
         txSetColor (RGB(255, 255, 5));
         txSetFillColor (RGB(255, 255, 5));
@@ -102,9 +114,17 @@ void DrawDoor2(int xDoor, int yDoor)
 {
     Win32::TransparentBlt (txDC(), x, 380, rx, ry, jotoro, 0 , 0, 130, 314, TX_WHITE) ;
 }
+void drawJotoroR(HDC jotoroR, int x, int rx, int ry)
+{
+    Win32::TransparentBlt (txDC(), x, 380, rx, ry, jotoroR, 0 , 0, 130, 314, TX_WHITE) ;
+}
 void drawStar(HDC star, int x, int y, int rx, int ry)
 {
     Win32::TransparentBlt (txDC(), x, y, rx, ry, star, 0 , 0, 214, 531, TX_WHITE) ;
+}
+void drawStarR(HDC starR, int x, int y, int rx, int ry)
+{
+    Win32::TransparentBlt (txDC(), x, y, rx, ry, starR, 0 , 0, 214, 531, TX_WHITE) ;
 }
 void drawDialog(const char* text, COLORREF color)
 {
@@ -126,9 +146,8 @@ void drawOjid()
     txSetColor (TX_BLUE);
     txSetFillColor (TX_BLUE);
     txSelectFont("Comic Sans MS" , 100) ;
-    txDrawText(0, 0, 800, 600, "Спустя\n"
-                                "2 часа");
-
+    txDrawText(0, 0, 800, 500, "Спустя");
+    txDrawText(0, 100, 800, 600, "2 часа");
 }
 
 int main()
@@ -148,18 +167,22 @@ int main()
 
     txCreateWindow (800, 600);
 
-    HDC jotoro  = txLoadImage ("jotoroR2.bmp");
+    HDC zvezd = txLoadImage ("zvezd.bmp");
+
+    HDC jotoro = txLoadImage ("jotoroR2.bmp");
+    HDC jotoroR = txLoadImage ("jotoro2.bmp");
     int x_jotoro = 550;
     int xRazm = 47;
     int yRazm = 113;
 
-    HDC star  = txLoadImage ("Star.bmp");
+    HDC star = txLoadImage ("Star.bmp");
+    HDC starR = txLoadImage ("StarR.bmp");
     int xStar = 620;
     float yStar = 390;
     float xRazmS = 20;
     float yRazmS = 50;
 
-    HDC oblako  = txLoadImage ("obl.bmp");
+    HDC oblako = txLoadImage ("obl.bmp");
     int x_oblako = 290;
 
     while(xDoor < 626)
@@ -492,6 +515,29 @@ int main()
         drawOjid();
 
         vrema += 10;
+        txEnd();
+        txSleep(10);
+    }
+
+     while(xDoor2 > 110)
+    {
+        txBegin();
+
+        drawNight();
+
+        drawZvezd(zvezd);
+
+        drawShop();
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        dravRook();
+
+        xDoor2 -= 4;
+        yDoor2 += 4;
+
         txEnd();
         txSleep(10);
     }
