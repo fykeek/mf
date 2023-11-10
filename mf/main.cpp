@@ -542,9 +542,103 @@ int main()
         txSleep(10);
     }
 
+    while(yRazm < 150)
+    {
+        txBegin();
+
+        drawNight();
+
+        drawZvezd(zvezd);
+
+        drawShop();
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        dravRook();
+
+
+        xRazm += 1;
+        yRazm += 2;
+        //x_jotoro += 1;
+        txEnd();
+        txSleep(10);
+    }
+
+    while(xDoor2 < 190)
+    {
+        txBegin();
+
+        drawNight();
+
+        drawZvezd(zvezd);
+
+        drawShop();
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        dravRook();
+
+        xDoor2 += 4;
+        yDoor2 -= 4;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    while(x_jotoro < 870)
+    {
+        txBegin();
+
+        drawNight();
+
+        drawZvezd(zvezd);
+
+        drawShop();
+
+        DrawDoor2(xDoor2, yDoor2);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        dravRook();
+
+        x_jotoro += 5;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    x_jotoro = -65;
+
+    while(x_jotoro < 100)
+    {
+        txBegin();
+
+        drawNight();
+
+        drawZvezd(zvezd);
+
+        drawHouse();
+
+        DrawDoor(xDoor, yDoor);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
+
+        x_jotoro += 5;
+
+        txEnd();
+        txSleep(10);
+    }
+
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
+    txDeleteDC(jotoroR);
     txDeleteDC(star);
+    txDeleteDC(starR);
+    txDeleteDC(zvezd);
 
     txTextCursor (false);
     return 0;
