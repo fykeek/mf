@@ -1,5 +1,16 @@
 #include "TXLib.h"
 
+void drawTytle()
+{
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txRectangle (0,0, 800,600);
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txSelectFont("Comic Sans MS" , 100) ;
+    txDrawText(0, 0, 800, 500, "БИЗАРНЫЙ ПОХОД");
+    txDrawText(0, 100, 800, 600, "В МАГАЗИН");
+}
 void drawFon()
 {
     txSetColor (RGB(153, 217, 234));
@@ -9,14 +20,26 @@ void drawFon()
     txSetFillColor (RGB(80, 220, 30));
     txRectangle   (0, 490, 800, 600);
 }
-void drawNight()
+void drawNight(int n)
 {
-    txSetColor (RGB(17, 10, 100));
-    txSetFillColor (RGB(17, 10, 100));
-    txRectangle(0, 0, 800, 490);
-    txSetColor (RGB(0, 123, 0));
-    txSetFillColor (RGB(0, 123, 0));
-    txRectangle   (0, 490, 800, 600);
+    if (n == 0)
+    {
+        txSetColor (RGB(17, 10, 100));
+        txSetFillColor (RGB(17, 10, 100));
+        txRectangle(0, 0, 800, 490);
+        txSetColor (RGB(0, 123, 0));
+        txSetFillColor (RGB(0, 123, 0));
+        txRectangle   (0, 490, 800, 600);
+    }
+    else
+    {
+        txSetColor (RGB(18, 18, 18));
+        txSetFillColor (RGB(18, 18, 18));
+        txRectangle(0, 0, 800, 490);
+        txSetColor (RGB(88, 88, 88));
+        txSetFillColor (RGB(88, 88, 88));
+        txRectangle   (0, 490, 800, 600);
+    }
 }
 void drawZvezd(HDC zvezd)
 {
@@ -35,31 +58,62 @@ void drawOblako(HDC oblako, int x)
     txTransparentBlt (txDC(), x, 56, 231, 124, oblako, 0 , 0, TX_BLACK) ;
 }
 
-void drawHouse()
+void drawHouse(int n)
 {
-    txSetColor (RGB(240, 230, 180));
-    txSetFillColor (RGB(240, 230, 180));
-    txRectangle   (800, 490, 500, 200);
-    txSetColor (RGB(255, 0, 0));
-    txSetFillColor (RGB(255, 0, 0));
-    POINT tr[3] = {{500, 199}, {650, 40}, {800, 199}};
-    txPolygon (tr,3);
-    txSetColor (RGB(60, 70, 210));
-    txSetFillColor (RGB(60, 70, 210));
-    txRectangle   (540, 240, 625, 325);
-    txRectangle   (675, 240, 760, 325);
-    txRectangle   (675, 375, 760, 460);
-    txSetColor (TX_YELLOW);
-    txSetFillColor (TX_YELLOW);;
-    txRectangle   (540, 375, 625, 490);
-}
-void DrawDoor(int xDoor, int yDoor)
-{
+    if (n == 0)
+    {
+        txSetColor (RGB(240, 230, 180));
+        txSetFillColor (RGB(240, 230, 180));
+        txRectangle   (800, 490, 500, 200);
+        txSetColor (RGB(255, 0, 0));
+        txSetFillColor (RGB(255, 0, 0));
+        POINT tr[3] = {{500, 199}, {650, 40}, {800, 199}};
+        txPolygon (tr,3);
+        txSetColor (RGB(60, 70, 210));
+        txSetFillColor (RGB(60, 70, 210));
+        txRectangle   (540, 240, 625, 325);
+        txRectangle   (675, 240, 760, 325);
+        txRectangle   (675, 375, 760, 460);
+        txSetColor (TX_YELLOW);
+        txSetFillColor (TX_YELLOW);;
+        txRectangle   (540, 375, 625, 490);
+    }
 
-    txSetColor (RGB(185, 122, 87));
-    txSetFillColor (RGB(185, 122, 87));
-    POINT door[4] = {{xDoor,yDoor}, {625, 375}, {625, 490},{xDoor, yDoor + 115}};
-    txPolygon(door, 4);
+    else
+    {
+        txSetColor (RGB(228, 228, 228));
+        txSetFillColor (RGB(228, 228, 228));
+        txRectangle   (800, 490, 500, 200);
+        txSetColor (RGB(54, 54, 54));
+        txSetFillColor (RGB(54, 54, 54));
+        POINT tr[3] = {{500, 199}, {650, 40}, {800, 199}};
+        txPolygon (tr,3);
+        txSetColor (RGB(78, 78, 78));
+        txSetFillColor (RGB(78, 78, 78));
+        txRectangle   (540, 240, 625, 325);
+        txRectangle   (675, 240, 760, 325);
+        txRectangle   (675, 375, 760, 460);
+        txSetColor (TX_YELLOW);
+        txSetFillColor (TX_YELLOW);;
+        txRectangle   (540, 375, 625, 490);
+    }
+}
+void DrawDoor(int xDoor, int yDoor, int n)
+{
+    if (n == 0)
+    {
+        txSetColor (RGB(185, 122, 87));
+        txSetFillColor (RGB(185, 122, 87));
+        POINT door[4] = {{xDoor,yDoor}, {625, 375}, {625, 490},{xDoor, yDoor + 115}};
+        txPolygon(door, 4);
+    }
+    else
+    {
+        txSetColor (RGB(133, 133, 133));
+        txSetFillColor (RGB(133, 133, 133));
+        POINT door[4] = {{xDoor,yDoor}, {625, 375}, {625, 490},{xDoor, yDoor + 115}};
+        txPolygon(door, 4);
+    }
 }
 void drawShop()
 {
@@ -149,6 +203,20 @@ void drawOjid()
     txDrawText(0, 0, 800, 500, "Спустя");
     txDrawText(0, 100, 800, 600, "2 часа");
 }
+void drawTitr(int titrY)
+{
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txRectangle (0,0, 800,600);
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txSelectFont("Comic Sans MS" , 20) ;
+    txDrawText(0, titrY, 800, titrY + 20, "Автор - Марьин Лев");
+    txDrawText(0, titrY - 40, 800, titrY - 20, "Режисёр - Марьин Лев");
+    txDrawText(0, titrY, 800, titrY + 20, "Сценарист - Марьин Лев");
+    txDrawText(0, titrY + 40, 800, titrY + 20, "Программист - Марьин Лев");
+    txDrawText(0, titrY, 800, titrY + 20, "Художник -постановщик - Марьин Лев");
+}
 
 int main()
     {
@@ -185,6 +253,21 @@ int main()
     HDC oblako = txLoadImage ("obl.bmp");
     int x_oblako = 290;
 
+    while(vrema < 350)
+    {
+        txBegin();
+
+        drawTytle();
+
+
+        vrema += 10;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    vrema = 0;
+
     while(xDoor < 626)
     {
         txBegin();
@@ -195,11 +278,11 @@ int main()
 
         drawOblako(oblako, x_oblako);
 
-        drawHouse();
+        drawHouse(0);
 
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
-        DrawDoor(xDoor, yDoor);
+        DrawDoor(xDoor, yDoor, 0);
 
         xDoor += 4;
         yDoor += 4;
@@ -218,9 +301,9 @@ int main()
 
         drawOblako(oblako, x_oblako);
 
-        drawHouse();
+        drawHouse(0);
 
-        DrawDoor(xDoor, yDoor);
+        DrawDoor(xDoor, yDoor, 0);
 
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
@@ -244,9 +327,9 @@ int main()
 
         drawOblako(oblako, x_oblako);
 
-        drawHouse();
+        drawHouse(0);
 
-        DrawDoor(xDoor, yDoor);
+        DrawDoor(xDoor, yDoor,0);
 
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
@@ -268,9 +351,9 @@ int main()
 
         drawOblako(oblako, x_oblako);
 
-        drawHouse();
+        drawHouse(0);
 
-        DrawDoor(xDoor, yDoor);
+        DrawDoor(xDoor, yDoor, 0);
 
         drawJotoro(jotoro, x_jotoro, xRazm, yRazm);
 
@@ -523,7 +606,7 @@ int main()
     {
         txBegin();
 
-        drawNight();
+        drawNight(0);
 
         drawZvezd(zvezd);
 
@@ -546,7 +629,7 @@ int main()
     {
         txBegin();
 
-        drawNight();
+        drawNight(0);
 
         drawZvezd(zvezd);
 
@@ -570,7 +653,7 @@ int main()
     {
         txBegin();
 
-        drawNight();
+        drawNight(0);
 
         drawZvezd(zvezd);
 
@@ -593,7 +676,7 @@ int main()
     {
         txBegin();
 
-        drawNight();
+        drawNight(0);
 
         drawZvezd(zvezd);
 
@@ -617,13 +700,13 @@ int main()
     {
         txBegin();
 
-        drawNight();
+        drawNight(0);
 
         drawZvezd(zvezd);
 
-        drawHouse();
+        drawHouse(0);
 
-        DrawDoor(xDoor, yDoor);
+        DrawDoor(xDoor, yDoor, 0);
 
         drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
 
@@ -632,6 +715,12 @@ int main()
         txEnd();
         txSleep(10);
     }
+        txBegin();
+
+        drawTitr(0);
+
+        txEnd();
+
 
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
