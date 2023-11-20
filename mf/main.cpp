@@ -180,9 +180,13 @@ void drawStarR(HDC starR, int x, int y, int rx, int ry)
 {
     Win32::TransparentBlt (txDC(), x, y, rx, ry, starR, 0 , 0, 214, 531, TX_WHITE) ;
 }
+void drawDio(HDC dio)
+{
+    Win32::TransparentBlt (txDC(), 225, 387, 67, 157, dio, 0 , 0, 550, 1280, TX_WHITE) ;
+}
 void drawDialog(const char* text, COLORREF color)
 {
-    txSetColor (color);
+   txSetColor (color);
     txSetFillColor (color);
     POINT d[3] ={{570, 380}, {550, 375}, {560, 370}};
     txPolygon(d, 3);
@@ -211,11 +215,29 @@ void drawTitr(int titrY)
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
     txSelectFont("Comic Sans MS" , 20) ;
-    txDrawText(0, titrY, 800, titrY + 20, "Автор - Марьин Лев");
-    txDrawText(0, titrY - 40, 800, titrY - 20, "Режисёр - Марьин Лев");
-    txDrawText(0, titrY, 800, titrY + 20, "Сценарист - Марьин Лев");
-    txDrawText(0, titrY + 40, 800, titrY + 20, "Программист - Марьин Лев");
-    txDrawText(0, titrY, 800, titrY + 20, "Художник -постановщик - Марьин Лев");
+    txDrawText(0, 0, 800, 540, "Автор - Марьин Лев");
+    txDrawText(0, 0, 800, 570, "Режисёр - Марьин Лев");
+    txDrawText(0, 0, 800, 600, "Сценарист - Марьин Лев");
+    txDrawText(0, 30, 800, 600, "Программист - Марьин Лев");
+    txDrawText(0, 60, 800, 600, "Художник -постановщик - Марьин Лев");
+}
+void drawDD(const char* text)
+{
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    POINT d[3] ={{135, 380}, {155, 375}, {145, 370}};
+    txPolygon(d, 3);
+    txEllipse  (135, 330, 235, 380);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txSelectFont("Comic Sans MS" , 20) ;
+    txDrawText(135, 330, 235, 380, text);
+}
+void drawPula(int x)
+{
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txCircle(x, 590, 2);
 }
 
 int main()
@@ -233,6 +255,8 @@ int main()
     int xNak = 300;
     int yNak = 430;
 
+    int xPula = 90;
+
     txCreateWindow (800, 600);
 
     HDC zvezd = txLoadImage ("zvezd.bmp");
@@ -249,6 +273,9 @@ int main()
     float yStar = 390;
     float xRazmS = 20;
     float yRazmS = 50;
+
+    HDC dio = txLoadImage ("dio.bmp");
+    HDC dioL = txLoadImage ("dioL.bmp");
 
     HDC oblako = txLoadImage ("obl.bmp");
     int x_oblako = 290;
@@ -696,7 +723,7 @@ int main()
 
     x_jotoro = -65;
 
-    while(x_jotoro < 100)
+    while(x_jotoro < 75 )
     {
         txBegin();
 
@@ -710,16 +737,45 @@ int main()
 
         drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
 
+        drawDio(dio);
+
         x_jotoro += 5;
 
         txEnd();
         txSleep(10);
     }
+
+    vrema = 0;
+
+    while(vrema < 150)
+    {
         txBegin();
 
-        drawTitr(0);
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
+
+        drawDio(dio);
+
+        drawDD("ДИО!!!");
+
+        vrema += 10;
 
         txEnd();
+        txSleep(10);
+    }
+
+    txBegin();
+
+    drawTitr(0);
+
+    txEnd();
 
 
     txDeleteDC(jotoro);
@@ -728,6 +784,8 @@ int main()
     txDeleteDC(star);
     txDeleteDC(starR);
     txDeleteDC(zvezd);
+    txDeleteDC(dio);
+    txDeleteDC(dioL);
 
     txTextCursor (false);
     return 0;
