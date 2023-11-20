@@ -184,6 +184,10 @@ void drawDio(HDC dio)
 {
     Win32::TransparentBlt (txDC(), 225, 387, 67, 157, dio, 0 , 0, 550, 1280, TX_WHITE) ;
 }
+void drawTw(HDC tw)
+{
+    Win32::TransparentBlt (txDC(), 292, 287, 86, 113, tw, 0 , 0, 246, 320, TX_WHITE) ;
+}
 void drawDialog(const char* text, COLORREF color)
 {
    txSetColor (color);
@@ -233,11 +237,23 @@ void drawDD(const char* text)
     txSelectFont("Comic Sans MS" , 20) ;
     txDrawText(135, 330, 235, 380, text);
 }
+void drawDDI(const char* text)
+{
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    POINT d[3] ={{235, 380}, {215, 375}, {225, 370}};
+    txPolygon(d, 3);
+    txEllipse  (135, 330, 235, 380);
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txSelectFont("Comic Sans MS" , 20) ;
+    txDrawText(135, 330, 235, 380, text);
+    }
 void drawPula(int x)
 {
     txSetColor (TX_BLACK);
     txSetFillColor (TX_BLACK);
-    txCircle(x, 590, 2);
+    txCircle(x, 390, 2);
 }
 
 int main()
@@ -276,6 +292,8 @@ int main()
 
     HDC dio = txLoadImage ("dio.bmp");
     HDC dioL = txLoadImage ("dioL.bmp");
+
+    HDC tw = txLoadImage ("tw.bmp");
 
     HDC oblako = txLoadImage ("obl.bmp");
     int x_oblako = 290;
@@ -589,7 +607,6 @@ int main()
         txEnd();
         txSleep(10);
     }
-
     while(xDoor2 < 194)
     {
         txBegin();
@@ -735,7 +752,7 @@ int main()
 
         DrawDoor(xDoor, yDoor, 0);
 
-        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
 
         drawDio(dio);
 
@@ -759,13 +776,74 @@ int main()
 
         DrawDoor(xDoor, yDoor, 0);
 
-        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);dravRook();
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
 
         drawDio(dio);
 
         drawDD("ÄÈÎ!!!");
 
         vrema += 10;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    xStar = 10;
+
+    while(xPula < 150)
+    {
+        txBegin();
+
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula);
+
+        drawDio(dio);
+
+        xPula += 5;
+
+        txEnd();
+        txSleep(2);
+
+    }
+
+    vrema = 0;
+
+    while(vrema < 300)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezd);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        drawStar(star, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula);
+
+        drawDio(dio);
+
+        drawDDI("ZA WARUDO!");
+
+        drawTw(tw);
+
+        vrema +=10 ;
 
         txEnd();
         txSleep(10);
@@ -786,6 +864,7 @@ int main()
     txDeleteDC(zvezd);
     txDeleteDC(dio);
     txDeleteDC(dioL);
+    txDeleteDC(tw);
 
     txTextCursor (false);
     return 0;
