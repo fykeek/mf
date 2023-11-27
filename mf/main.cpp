@@ -219,11 +219,11 @@ void drawTitr(int titrY)
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
     txSelectFont("Comic Sans MS" , 20) ;
-    txDrawText(0, 0, 800, 540, "Автор - Марьин Лев");
-    txDrawText(0, 0, 800, 570, "Режисёр - Марьин Лев");
-    txDrawText(0, 0, 800, 600, "Сценарист - Марьин Лев");
-    txDrawText(0, 30, 800, 600, "Программист - Марьин Лев");
-    txDrawText(0, 60, 800, 600, "Художник -постановщик - Марьин Лев");
+    txDrawText(0, titrY - 160, 800, titrY - 160 + 600, "Автор - Марьин Лев");
+    txDrawText(0, titrY - 80, 800, titrY - 80 + 600, "Режисёр - Марьин Лев");
+    txDrawText(0, titrY, 800, titrY + 600, "Сценарист - Марьин Лев");
+    txDrawText(0, titrY + 80, 800, titrY + 80 + 600, "Программист - Марьин Лев");
+    txDrawText(0, titrY + 160, 800, titrY + 160 + 600, "Художник -постановщик - Марьин Лев");
 }
 void drawDD(const char* text)
 {
@@ -273,27 +273,34 @@ int main()
 
     int xPula = 90;
 
+    int titrY = 0;
+
     txCreateWindow (800, 600);
 
     HDC zvezd = txLoadImage ("zvezd.bmp");
+    HDC zvezdB = txLoadImage ("zvezdB.bmp");
 
     HDC jotoro = txLoadImage ("jotoroR2.bmp");
     HDC jotoroR = txLoadImage ("jotoro2.bmp");
+    HDC jotoroRB = txLoadImage ("jotoro2B.bmp");
     int x_jotoro = 550;
     int xRazm = 47;
     int yRazm = 113;
 
     HDC star = txLoadImage ("Star.bmp");
     HDC starR = txLoadImage ("StarR.bmp");
+    HDC starRB = txLoadImage ("StarRB.bmp");
     int xStar = 620;
     float yStar = 390;
     float xRazmS = 20;
     float yRazmS = 50;
 
     HDC dio = txLoadImage ("dio.bmp");
+    HDC dioB = txLoadImage ("dioB.bmp");
     HDC dioL = txLoadImage ("dioL.bmp");
 
     HDC tw = txLoadImage ("tw.bmp");
+    HDC twB = txLoadImage ("twB.bmp");
 
     HDC oblako = txLoadImage ("obl.bmp");
     int x_oblako = 290;
@@ -825,23 +832,23 @@ int main()
 
         drawNight(1);
 
-        drawZvezd(zvezd);
+        drawZvezd(zvezdB);
 
         drawHouse(1);
 
         DrawDoor(xDoor, yDoor, 1);
 
-        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
 
-        drawStar(star, xStar, yStar, xRazmS, yRazmS);
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
 
         drawPula(xPula);
 
-        drawDio(dio);
+        drawDio(dioB);
 
         drawDDI("ZA WARUDO!");
 
-        drawTw(tw);
+        drawTw(twB);
 
         vrema +=10 ;
 
@@ -859,12 +866,17 @@ int main()
     txDeleteDC(jotoro);
     txDeleteDC(oblako);
     txDeleteDC(jotoroR);
+    txDeleteDC(jotoroRB);
     txDeleteDC(star);
     txDeleteDC(starR);
+    txDeleteDC(starRB);
     txDeleteDC(zvezd);
+    txDeleteDC(zvezdB);
     txDeleteDC(dio);
     txDeleteDC(dioL);
     txDeleteDC(tw);
+    txDeleteDC(dioB);
+    txDeleteDC(twB);
 
     txTextCursor (false);
     return 0;
