@@ -184,6 +184,10 @@ void drawDio(HDC dio)
 {
     Win32::TransparentBlt (txDC(), 225, 387, 67, 157, dio, 0 , 0, 550, 1280, TX_WHITE) ;
 }
+void drawDioL(HDC dio)
+{
+    Win32::TransparentBlt (txDC(), 225, 500, 157, 67, dio, 0 , 0, 1280, 550, TX_WHITE) ;
+}
 void drawTw(HDC tw)
 {
     Win32::TransparentBlt (txDC(), 292, 287, 86, 113, tw, 0 , 0, 246, 320, TX_WHITE) ;
@@ -249,11 +253,26 @@ void drawDDI(const char* text)
     txSelectFont("Comic Sans MS" , 20) ;
     txDrawText(135, 330, 235, 380, text);
     }
-void drawPula(int x)
+void drawPula(int x, int BIMBAMBAM)
 {
-    txSetColor (TX_BLACK);
-    txSetFillColor (TX_BLACK);
-    txCircle(x, 390, 2);
+
+    if (BIMBAMBAM == 0){
+
+        txSetColor (TX_BLACK);
+        txSetFillColor (TX_BLACK);
+        txCircle(x, 390, 2);
+    }
+    else if ( BIMBAMBAM == 1) {
+
+       txSetColor (TX_GREY);
+       txSetFillColor (TX_GREY);
+       txLine(x, 390, x + 100, 390);
+    }
+    else {
+       txSetColor (TX_GREY);
+       txSetFillColor (TX_GREY);
+       txLine(370, 450, 370, 550);
+    }
 }
 
 int main()
@@ -273,7 +292,7 @@ int main()
 
     int xPula = 90;
 
-    int titrY = 0;
+    int titrY = -500;
 
     txCreateWindow (800, 600);
 
@@ -813,7 +832,7 @@ int main()
 
         drawStar(star, xStar, yStar, xRazmS, yRazmS);
 
-        drawPula(xPula);
+        drawPula(xPula, 0);
 
         drawDio(dio);
 
@@ -842,7 +861,7 @@ int main()
 
         drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
 
-        drawPula(xPula);
+        drawPula(xPula, 0);
 
         drawDio(dioB);
 
@@ -856,11 +875,380 @@ int main()
         txSleep(10);
     }
 
-    txBegin();
+    vrema = 0;
 
-    drawTitr(0);
+    while(vrema < 300)
+    {
+        txBegin();
 
-    txEnd();
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 0);
+
+        drawDio(dioB);
+
+        drawDDI("ХА-ХА-ХА\n"
+                 "Джотаро");
+
+        drawTw(twB);
+
+        vrema +=10 ;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    vrema = 0;
+
+    while(vrema < 300)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 0);
+
+        drawDio(dioB);
+
+        drawDDI("Я владею\n"
+                "Стендом");
+
+
+        drawTw(twB);
+
+        vrema +=10 ;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    vrema = 0;
+
+    while(vrema < 300)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 0);
+
+        drawDio(dioB);
+
+        drawDDI("Тогоже\n"
+                "Типа");
+
+        drawTw(twB);
+
+        vrema +=10 ;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    vrema = 0;
+
+    while(vrema < 300)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 0);
+
+        drawDio(dioB);
+
+        drawDDI("Стоп...");
+
+        drawTw(twB);
+
+        vrema +=10 ;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    vrema = 0;
+
+    while(vrema < 300)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 0);
+
+        drawDio(dioB);
+
+        drawDD("ВОТ ТЫ\n"
+              "И ПОПАЛСЯ");
+
+        drawTw(twB);
+
+        vrema +=10 ;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    xPula = 90;
+
+     while(xPula < 150)
+    {
+        txBegin();
+
+        drawNight(1);
+
+        drawZvezd(zvezdB);
+
+        drawHouse(1);
+
+        DrawDoor(xDoor, yDoor, 1);
+
+        drawJotoro(jotoroRB, x_jotoro, xRazm, yRazm);
+
+        drawStar(starRB, xStar, yStar, xRazmS, yRazmS);
+
+        drawPula(xPula, 1);
+
+        drawDio(dio);
+
+        xPula += 5;
+
+        txEnd();
+        txSleep(2);
+
+    }
+
+     vrema = 0;
+
+     while (vrema < 300) {
+
+     txBegin();
+
+     drawNight(0);
+
+     drawZvezd(zvezd);
+
+     drawHouse(0);
+
+     DrawDoor(xDoor, yDoor, 0);
+
+     drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+     drawStar(starR, xStar, yStar, xRazmS, yRazmS);
+
+     drawPula(xPula, 2);
+
+     drawDioL(dioL);
+
+     drawDD("Я же за\n"
+            "Хлебом шёл");
+
+            vrema += 10;
+
+
+            txEnd();
+            txSleep(10);
+
+        }
+
+        vrema = 0;
+
+    while (vrema < 300) {
+
+            txBegin();
+
+            drawNight(0);
+
+            drawZvezd(zvezd);
+
+            drawHouse(0);
+
+            DrawDoor(xDoor, yDoor, 0);
+
+            drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+            drawStar(starR, xStar, yStar, xRazmS, yRazmS);
+
+            drawPula(xPula, 2);
+
+            drawDioL(dioL);
+
+            drawDD("Точно");
+
+            vrema += 10;
+
+
+            txEnd();
+            txSleep(10);
+
+        }
+
+    while (x_jotoro < 540) {
+
+        txBegin();
+
+        x_jotoro += 5;
+
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        drawPula(xPula, 2);
+
+        drawDioL(dioL);
+
+
+        txEnd();
+        txSleep(10);
+    }
+
+    while(xDoor < 626)
+    {
+
+        txBegin();
+
+        xDoor += 4;
+        yDoor += 4;
+
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        drawPula(xPula, 2);
+
+        drawDioL(dioL);
+
+        txEnd();
+        txSleep(10);
+    }
+    while(yRazm > 113)
+    {
+        txBegin();
+
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        drawPula(xPula, 2);
+
+        drawDioL(dioL);
+
+
+        xRazm -= 1;
+        yRazm -= 2;
+        x_jotoro += 1;
+        txEnd();
+        txSleep(10);
+    }
+    while(xDoor > 540)
+    {
+        txBegin();
+
+        drawNight(0);
+
+        drawZvezd(zvezd);
+
+        drawHouse(0);
+
+        drawJotoro(jotoroR, x_jotoro, xRazm, yRazm);
+
+        DrawDoor(xDoor, yDoor, 0);
+
+        drawPula(xPula, 2);
+
+        drawDioL(dioL);
+
+        xDoor -= 4;
+        yDoor -= 4;
+
+        txEnd();
+        txSleep(10);
+    }
+
+    while (titrY < 470){
+
+        txBegin();
+
+        drawTitr(titrY);
+
+
+        titrY += 5;
+
+        txEnd();
+        txSleep(10);
+
+        }
+
+
 
 
     txDeleteDC(jotoro);
